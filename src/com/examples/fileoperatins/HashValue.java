@@ -45,6 +45,7 @@ public class HashValue
 					HashValue h=new HashValue();
 					h.getHashofFile("D:\\Test\\file1.txt");      // non-static method
 					//HashValue.getHashofFile("D:\\Test\\file1.txt"); //static method
+					h.getHashofFile("D:\\Test\\file2.txt");
 					
 					
 					break;
@@ -61,23 +62,23 @@ public class HashValue
 	 String getHashofFile(String strFileName) throws IOException, NoSuchAlgorithmException
 	{
 		MessageDigest md1 = MessageDigest.getInstance("MD5");
-	//	MessageDigest md2 = MessageDigest.getInstance("MD5");
+		MessageDigest md2 = MessageDigest.getInstance("MD5");
 		
 		System.out.println("file data "+Paths.get("D:\\Test\\file1.txt"));
-		//System.out.println("file data "+Paths.get("D:\\Test\\file2.txt"));
+		System.out.println("file data "+Paths.get("D:\\Test\\file2.txt"));
 		
 		try (InputStream is = Files.newInputStream(Paths.get(strFileName));
 		 DigestInputStream dis = new DigestInputStream(is, md1)) 
 		{
 		  /* Read decorated stream (dis) to EOF as normal... */
 		}	
+		
 		byte[] digest1 = md1.digest();
 		System.out.println("Hash value of file:-"+digest1);
 		return digest1.toString();
-		//byte[] digest2 = md2.digest();
-
-		//System.out.println("Hash value of file:-"+digest2);
-		//return digest2.toString();
+		byte[] digest2 = md2.digest();
+		System.out.println("Hash value of file:-"+digest2);
+		return digest2.toString();
 		
 		
 		
@@ -87,7 +88,7 @@ public class HashValue
 	 String displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
 	 {
 		 File folder =new File("D:\\Test\\");
-			File[] listOfFiles = folder.listFiles();
+		 File[] listOfFiles = folder.listFiles();
 			System.out.println("Files location :"+folder);
 			for(int i=0;i<listOfFiles.length;i++)
 			{
@@ -99,8 +100,8 @@ public class HashValue
 				else if(listOfFiles[i].isDirectory())
 
 				{
-					System.out.print("Directory location:"+listOfFiles[i]);
-					System.out.println("\nDirectory:\n"+listOfFiles[i].getName());
+					System.out.println("Directory location:"+listOfFiles[i]);
+				//	System.out.println("\nDirectory:\n"+listOfFiles[i].getName());
 					
 
 				}
@@ -119,6 +120,7 @@ public class HashValue
 			
 	 }
 }
+
 
 	
 		

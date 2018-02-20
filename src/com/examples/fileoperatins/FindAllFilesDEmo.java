@@ -19,8 +19,9 @@ public class FindAllFilesDEmo
 	
 		
 		// ------------------New Code--------------------
-		File currentDir = new File("."); // current directory
-		displayDirectoryContents(currentDir);
+		//File currentDir = new File("D:\\shital\\Test\\"); // I want to acess it as current directory
+		File currentDir =new File(".");
+	displayDirectoryContents(currentDir); // it show current Directory of project.
 	}
 
 	public static void displayDirectoryContents(File dir) {
@@ -80,4 +81,7 @@ public class FindAllFilesDEmo
 		    }
 		    System.out.println(""+directory);
 		}
-} */
+	
+
+
+} 
