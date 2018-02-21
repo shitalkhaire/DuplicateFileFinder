@@ -62,7 +62,7 @@ public class HashValue
 	 String getHashofFile(String strFileName) throws IOException, NoSuchAlgorithmException
 	{
 		MessageDigest md1 = MessageDigest.getInstance("MD5");
-		MessageDigest md2 = MessageDigest.getInstance("MD5");
+		//MessageDigest md2 = MessageDigest.getInstance("MD5");
 		
 		System.out.println("file data "+Paths.get("D:\\Test\\file1.txt"));
 		System.out.println("file data "+Paths.get("D:\\Test\\file2.txt"));
@@ -74,13 +74,17 @@ public class HashValue
 		}	
 		
 		byte[] digest1 = md1.digest();
+		byte[] digest2 = md1.digest();
 		System.out.println("Hash value of file:-"+digest1);
-		return digest1.toString();
-		byte[] digest2 = md2.digest();
+	//	return digest1.toString();		
 		System.out.println("Hash value of file:-"+digest2);
-		return digest2.toString();
+	
+//if(true)
+	return digest1.toString();
+	
+//	return digest2.toString();
 		
-		
+			
 		
 		
 	}
@@ -101,7 +105,7 @@ public class HashValue
 
 				{
 					System.out.println("Directory location:"+listOfFiles[i]);
-				//	System.out.println("\nDirectory:\n"+listOfFiles[i].getName());
+					System.out.println("\nDirectory:\n"+listOfFiles[i].getName());
 					
 
 				}
