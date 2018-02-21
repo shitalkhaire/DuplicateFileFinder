@@ -62,6 +62,7 @@ public class HashValue
 	 String getHashofFile(String strFileName) throws IOException, NoSuchAlgorithmException
 	{
 		MessageDigest md1 = MessageDigest.getInstance("MD5");
+		
 		//MessageDigest md2 = MessageDigest.getInstance("MD5");
 		
 		System.out.println("file data "+Paths.get("D:\\Test\\file1.txt"));
@@ -79,7 +80,7 @@ public class HashValue
 	//	return digest1.toString();		
 		System.out.println("Hash value of file:-"+digest2);
 	
-//if(true)
+//if(true)       when i was used this that time no any problems were shown      
 	return digest1.toString();
 	
 //	return digest2.toString();
