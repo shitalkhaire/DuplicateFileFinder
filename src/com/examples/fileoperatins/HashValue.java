@@ -46,7 +46,8 @@ public class HashValue
 					h.getHashofFile("D:\\Test\\file1.txt");      // non-static method
 					//HashValue.getHashofFile("D:\\Test\\file1.txt"); //static method
 					h.getHashofFile("D:\\Test\\file2.txt");
-					
+				
+					//	Files.hash(file, HashValue.getHashofFile()); 
 					
 					break;
 				case 3:
@@ -79,7 +80,9 @@ public class HashValue
 		System.out.println("Hash value of file:-"+digest1);
 	//	return digest1.toString();		
 		System.out.println("Hash value of file:-"+digest2);
-	
+	//Object file;
+	//Files.hash(file, HashValue.md5());    ---added new line here
+		
 //if(true)       when i was used this that time no any problems were shown      
 	return digest1.toString();
 	
@@ -90,7 +93,9 @@ public class HashValue
 		
 	}
 	 
-	 String displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
+	
+
+	String displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
 	 {
 		 File folder =new File("D:\\Test\\");
 		 File[] listOfFiles = folder.listFiles();
