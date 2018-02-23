@@ -55,15 +55,20 @@ import java.io.BufferedReader;
 				//		boolean isTwoEqual = h1.contentEquals(file1, file2);
 						
 						//see checksum
-						if((checksum1) == (checksum2))
+						System.out.println("Hash of First File: "+checksum1);
+						System.out.println("Hash of Second File: "+checksum2);
+						if((checksum1).equals(checksum2))
 						//if((checksum1).equals(cheksum2))
 						//Files.asByteSource(file1).contentEquals(Files.asByteSource(file2));
 						{
-						 System.out.println("Given File is not Duplicate..");
+						 System.out.println("Given File is  Duplicate..");
+						}
+						else
+						{
+							System.out.println("Given File is  Not-Duplicate..");	
 						}
 					
-						System.out.println("Hash of First File: "+checksum1);
-						System.out.println("Hash of Second File: "+checksum2);
+						
 
 						break;
 					case 3:
