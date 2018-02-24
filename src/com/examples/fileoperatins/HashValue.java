@@ -36,9 +36,15 @@ import java.io.BufferedReader;
 					
 					case 1:
 						HashValue h1=new HashValue();
-					String strAllFile = null;
+					String strAllFile = "D:\\Test\\";
 					
 					h1.displayFiles(strAllFile);
+					String sb;
+					String listOfFiles = null;
+					 sb=listOfFiles;
+					
+					System.out.println("List of Files ="+sb);
+
 						
 						break;
 						
@@ -84,7 +90,7 @@ import java.io.BufferedReader;
 		  
 		String displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
 		 {
-			 File folder =new File("D:\\Test\\");
+			 File folder =new File(strAllFile);
 			 File[] listOfFiles = folder.listFiles();
 				System.out.println("Files location :"+folder);
 				for(int i=0;i<listOfFiles.length;i++)
@@ -104,6 +110,7 @@ import java.io.BufferedReader;
 					}
 				}
 				
+				
 				for (File file : listOfFiles) 
 				{
 				   if (file.isFile()) 
@@ -113,7 +120,8 @@ import java.io.BufferedReader;
 				  
 					//return strAllFile;
 				}
-				return strAllFile;
+				return listOfFiles.toString();
+				
 				
 		 }
 	 static String getFileChecksum(MessageDigest digest, File file) throws IOException
