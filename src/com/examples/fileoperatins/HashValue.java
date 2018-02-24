@@ -38,10 +38,10 @@ import java.io.BufferedReader;
 						HashValue h1=new HashValue();
 					String strAllFile = "D:\\Test\\";
 					
-					h1.displayFiles(strAllFile);
-					String s;
-					String listOfFiles = null;
-					 s=listOfFiles;
+					
+					String s=h1.displayFiles(strAllFile);
+					//String listOfFiles = null;
+					// s=listOfFiles;
 					
 					System.out.println("List of Files ="+s);
 
