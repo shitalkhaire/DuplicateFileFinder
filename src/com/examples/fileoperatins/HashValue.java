@@ -39,11 +39,11 @@ import java.io.BufferedReader;
 					String strAllFile = "D:\\Test\\";
 					
 					h1.displayFiles(strAllFile);
-					String sb;
+					String s;
 					String listOfFiles = null;
-					 sb=listOfFiles;
+					 s=listOfFiles;
 					
-					System.out.println("List of Files ="+sb);
+					System.out.println("List of Files ="+s);
 
 						
 						break;
