@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 
 	public class HashValue 
 	{
+		int i;
 		public static void main(String[] args) throws NoSuchAlgorithmException, IOException 
 		{
 			
@@ -95,10 +96,11 @@ import java.io.BufferedReader;
 				System.out.println("Files location :"+folder);
 				for(int i=0;i<listOfFiles.length;i++)
 				{
+					System.out.println("value of i :="+i);
 					if(listOfFiles[i].isFile())
 					{
 						System.out.println(""+listOfFiles[i].getName());
-						
+						System.out.println(""+listOfFiles[i].getPath());
 					}
 					else if(listOfFiles[i].isDirectory())
 
@@ -108,6 +110,7 @@ import java.io.BufferedReader;
 						
 
 					}
+				//	System.out.println("value of i :="+i);
 				}
 				
 				
@@ -120,7 +123,10 @@ import java.io.BufferedReader;
 				  
 					//return strAllFile;
 				}
-				return listOfFiles.toString();
+			//	System.out.println("value of i :="+i);
+				return listOfFiles[i].getPath();
+				
+			//	return "Shital";
 				
 				
 		 }
