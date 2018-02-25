@@ -1,6 +1,6 @@
 package com.examples.fileoperatins;
 
-import java.io.BufferedReader;
+	import java.io.BufferedReader;
 	import java.io.File;
 	import java.io.FileInputStream;
 	import java.io.IOException;
@@ -39,12 +39,17 @@ import java.io.BufferedReader;
 						HashValue h1=new HashValue();
 					String strAllFile = "D:\\Test\\";
 					
-					
-					String s=h1.displayFiles(strAllFile);
+					String[] s=h1.displayFiles(strAllFile);
 					//String listOfFiles = null;
 					// s=listOfFiles;
-					
 					System.out.println("List of Files ="+s);
+					String str[] = new String[20];
+					
+					for(int i=0;i<str.length-1;i++)
+					{
+						String temp=str[i];
+						System.out.println(" "+temp);
+					}
 
 						
 						break;
@@ -89,18 +94,24 @@ import java.io.BufferedReader;
 		}
 
 		  
-		String displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
+		String[]  displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
 		 {
 			 File folder =new File(strAllFile);
 			 File[] listOfFiles = folder.listFiles();
+			
 				System.out.println("Files location :"+folder);
-				for(int i=0;i<listOfFiles.length;i++)
+				System.out.println("files length="+listOfFiles.length);
+				
+				
+				for(int i=1;i<listOfFiles.length;i++)
+			
 				{
-					System.out.println("value of i :="+i);
+					System.out.println("i :="+i);
 					if(listOfFiles[i].isFile())
 					{
 						System.out.println(""+listOfFiles[i].getName());
-						System.out.println(""+listOfFiles[i].getPath());
+						//System.out.println(""+listOfFiles[i].getPath());
+						 str[i]= listOfFiles[i].getPath();
 					}
 					else if(listOfFiles[i].isDirectory())
 
@@ -121,10 +132,11 @@ import java.io.BufferedReader;
 				        System.out.println(file.getName());
 				    }
 				  
-					//return strAllFile;
+					
 				}
-			//	System.out.println("value of i :="+i);
-				return listOfFiles[i].getPath();
+				System.out.println("value str :="+str[i]);
+				return  str;//.toString();
+				//listOfFiles[i].getPath();
 				
 			//	return "Shital";
 				
