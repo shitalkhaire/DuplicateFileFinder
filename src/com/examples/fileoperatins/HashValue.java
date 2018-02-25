@@ -12,6 +12,9 @@ package com.examples.fileoperatins;
 	import java.security.DigestInputStream;
 	import java.security.MessageDigest;
 	import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 	public class HashValue 
 	{
@@ -39,19 +42,21 @@ package com.examples.fileoperatins;
 						HashValue h1=new HashValue();
 					String strAllFile = "D:\\Test\\";
 					
-					String[] s=h1.displayFiles(strAllFile);
-					//String listOfFiles = null;
-					// s=listOfFiles;
-					System.out.println("List of Files ="+s);
-					String str[] = new String[20];
+				//	String[] s=h1.displayFiles(strAllFile);
+					Collection<String> collection = new ArrayList<String>();	 
+			       
+					//	String str[] = new String[20];
 					
-					for(int i=0;i<str.length-1;i++)
+				/*	for(int i=0;i<s.length-1;i++)
 					{
-						String temp=str[i];
+						String temp=s[i];
 						System.out.println(" "+temp);
 					}
-
-						
+                 */
+			        for (Iterator<String> iterator = collection.iterator(); iterator.hasNext();)
+			        {
+			        	 System.out.println("List of Files ="+iterator.next());
+			        }
 						break;
 						
 					case 2:
@@ -101,17 +106,24 @@ package com.examples.fileoperatins;
 			
 				System.out.println("Files location :"+folder);
 				System.out.println("files length="+listOfFiles.length);
-				
-				
+				//	String str[] = new String[20];
+
+		        Collection<String> collection = new ArrayList<String>();
+
 				for(int i=1;i<listOfFiles.length;i++)
-			
-				{
+		    //    for (Iterator<String> iterator = collection.iterator(); iterator.hasNext()) 
+		        {
+					 Iterator<String> iterator = collection.iterator();
+					System.out.println("value= " + iterator.next());
+				
+					//{
 					System.out.println("i :="+i);
 					if(listOfFiles[i].isFile())
 					{
 						System.out.println(""+listOfFiles[i].getName());
 						//System.out.println(""+listOfFiles[i].getPath());
-						 str[i]= listOfFiles[i].getPath();
+					System.out.println("Path of Files:=" +listOfFiles[i].getPath());
+					
 					}
 					else if(listOfFiles[i].isDirectory())
 
@@ -135,7 +147,8 @@ package com.examples.fileoperatins;
 					
 				}
 				System.out.println("value str :="+str[i]);
-				return  str;//.toString();
+				return  str; //.toString();
+				
 				//listOfFiles[i].getPath();
 				
 			//	return "Shital";
