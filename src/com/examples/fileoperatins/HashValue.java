@@ -45,7 +45,7 @@ import java.awt.List;
 						String strAllFile = "D:\\Test\\";
 						
 					//	String[] s=h1.displayFiles(strAllFile);
-						List<String> list = new ArrayList<String>();
+						ArrayList<String> list = new ArrayList<String>();
 						list.add(" "+list.getPath());
 						
 						//	String str[] = new String[20];
@@ -56,11 +56,11 @@ import java.awt.List;
 							System.out.println(" "+temp);
 						}
 	                 */
-				        for (Iterator<String> iterator = collection.iterator(); iterator.hasNext();)
-				        {
-				        	 System.out.println("List of Files ="+iterator.next());
-				        }
-							break;
+						  for (Iterator<String> iterator = list.iterator(); ((Iterator<String>) list).hasNext();)
+					        {
+					        	 System.out.println("List of Files ="+iterator.next());
+					        }
+								break;
 							
 						case 2:
 							//Create checksum for this file
@@ -116,7 +116,7 @@ import java.awt.List;
 					for(int i=1;i<listOfFiles.length;i++)
 			    //    for (Iterator<String> iterator = collection.iterator(); iterator.hasNext()) 
 			        {
-						 Iterator<String> iterator = collection.iterator();
+						 Iterator<String> iterator = list.iterator();
 						System.out.println("value= " + iterator.next());
 					
 						//{
