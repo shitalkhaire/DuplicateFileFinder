@@ -1,26 +1,26 @@
-	package com.examples.fileoperatins;
+package com.examples.fileoperatins;
 	
-		import java.io.BufferedReader;
-		import java.io.File;
-		import java.io.FileInputStream;
-		import java.io.IOException;
-		import java.io.InputStream;
-		import java.io.InputStreamReader;
-		import java.nio.file.Files;
-		import java.nio.file.NoSuchFileException;
-		import java.nio.file.Paths;
-		import java.security.DigestInputStream;
-		import java.security.MessageDigest;
-		import java.security.NoSuchAlgorithmException;
-	import java.util.ArrayList;
-	import java.util.Collection;
-	import java.util.Iterator;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.awt.List;
 
 	
 		public class HashValue 
 		{
-			int i;
+			static int i;
 			public static void main(String[] args) throws NoSuchAlgorithmException, IOException 
 			{
 				
@@ -41,13 +41,20 @@ import java.awt.List;
 						{
 						
 						case 1:
-							HashValue h1=new HashValue();
+						//	HashValue h1=new HashValue();
 						String strAllFile = "D:\\Test\\";
 						
 					//	String[] s=h1.displayFiles(strAllFile);
-						ArrayList<String> list = new ArrayList<String>();
-						list.add(" "+list.getPath());
 						
+						ArrayList<String> list = new ArrayList<String>();
+					    list.add(strAllFile);
+					//	 ArrayList<String> list = h1.displayFiles();
+				
+					//	boolean path =	list.add("Text line 1");
+						System.out.println("Path of Files:=");
+						for (int i = 0; i < list.size(); i++) {
+							System.out.println(list.get(i));
+						}
 						//	String str[] = new String[20];
 						
 					/*	for(int i=0;i<s.length-1;i++)
@@ -56,10 +63,10 @@ import java.awt.List;
 							System.out.println(" "+temp);
 						}
 	                 */
-						  for (Iterator<String> iterator = list.iterator(); ((Iterator<String>) list).hasNext();)
+						/*  for (Iterator<String> iterator = list.iterator(); ((Iterator<String>) list).hasNext();)
 					        {
 					        	 System.out.println("List of Files ="+iterator.next());
-					        }
+					        } */
 								break;
 							
 						case 2:
@@ -102,7 +109,7 @@ import java.awt.List;
 			}
 	
 			  
-			String[]  displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
+			String  displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
 			 {
 				 File folder =new File(strAllFile);
 				 File[] listOfFiles = folder.listFiles();
@@ -111,21 +118,21 @@ import java.awt.List;
 					System.out.println("files length="+listOfFiles.length);
 					//	String str[] = new String[20];
 	
-			        Collection<String> collection = new ArrayList<String>();
+			//		List<String> list = new ArrayList<String>();
 	
 					for(int i=1;i<listOfFiles.length;i++)
 			    //    for (Iterator<String> iterator = collection.iterator(); iterator.hasNext()) 
 			        {
-						 Iterator<String> iterator = list.iterator();
-						System.out.println("value= " + iterator.next());
-					
+				//		 Iterator<String> iterator = list.iterator();
+				//		System.out.println("value= " + iterator.next());
+						System.out.println("value= " + i);
 						//{
 						System.out.println("i :="+i);
 						if(listOfFiles[i].isFile())
 						{
 							System.out.println(""+listOfFiles[i].getName());
-							//System.out.println(""+listOfFiles[i].getPath());
-						System.out.println("Path of Files:=" +listOfFiles[i].getPath());
+							System.out.println(""+listOfFiles[i].getPath());
+					//	System.out.println("Path of Files:=" +listOfFiles[i].getPath());
 						
 						}
 						else if(listOfFiles[i].isDirectory())
@@ -149,8 +156,10 @@ import java.awt.List;
 					  
 						
 					}
-					System.out.println("value str :="+str[i]);
-					return  collection; //.toString();
+				
+				
+					//	System.out.println("value str :="+[i]);
+					return strAllFile;
 					
 					//listOfFiles[i].getPath();
 					
