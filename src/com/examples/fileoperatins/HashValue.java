@@ -42,28 +42,11 @@ package com.examples.fileoperatins;
  						
  						case 1:
  							HashValue h1=new HashValue();
- 						String strAllFile = "D:\\Test\\";
+ 							String strAllFile = "D:\\Test\\";
  						
- 					//	String[] s=h1.displayFiles(strAllFile);
-						List<String> list = new ArrayList<String>();
-				  		
-						list.add(" ");
- 						
- 						//	String str[] = new String[20];
- 						
- 					/*	for(int i=0;i<s.length-1;i++)
- 						{
- 							String temp=s[i];
- 							System.out.println(" "+temp);
- 						}
- 	                 */
- 						/*  for (Iterator<String> iterator = collection.iterator(); iterator.hasNext();)
-				        {
-				        	 System.out.println("List of Files ="+iterator.next());
-				        }
+ 						String[] s=h1.displayFiles(strAllFile);
 						
-                          */
-                       
+ 						
 					      break;
  							
  						case 2:
@@ -71,8 +54,8 @@ package com.examples.fileoperatins;
  							for(int i=1;i<listOfFiles.length;i++)
  				 			    //    for (Iterator<String> iterator = collection.iterator(); iterator.hasNext()) 
  				 			        {
- 				-						 Iterator<String> iterator = collection.iterator();
- 				+						 Iterator<String> iterator = list.iterator();
+ 										 Iterator<String> iterator = collection.iterator();
+ 										 Iterator<String> iterator = list.iterator();
  				 						System.out.println("value= " + iterator.next());
  				 					
  				 						//{
@@ -124,25 +107,17 @@ package com.examples.fileoperatins;
  			 					System.out.println("files length="+listOfFiles.length);
  			 					//	String str[] = new String[20];
  			 	
- 			 			        Collection<String> collection = new ArrayList<String>();
+ 			 			
  			 	
  			 					for(int i=1;i<listOfFiles.length;i++)
- 			 			    //    for (Iterator<String> iterator = collection.iterator(); iterator.hasNext()) 
+ 			 			 
  			 			        {
- 								//	 Iterator<String> iterator = collection.iterator();
- 									 Iterator<String> iterator = list.iterator();
- 			 						System.out.println("value= " + iterator.next());
  			 					
- 			 						//{
- 			 						System.out.println("value= " + iterator.next());
- 			 	 					
- 			 						//{
- 			 						System.out.println("i :="+i);
  			 						if(listOfFiles[i].isFile())
  			 						{
  			 							System.out.println(""+listOfFiles[i].getName());
- 			 							//System.out.println(""+listOfFiles[i].getPath());
- 			 						System.out.println("Path of Files:=" +listOfFiles[i].getPath());
+// 			 							System.out.println(""+listOfFiles[i].getPath());
+ 			 						    System.out.println("Path of Files:=" +listOfFiles[i].getPath());
  			 						
  			 						}
  			 						else if(listOfFiles[i].isDirectory())
