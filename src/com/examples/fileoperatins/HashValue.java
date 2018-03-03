@@ -44,36 +44,40 @@ package com.examples.fileoperatins;
  							HashValue h1=new HashValue();
  							String strAllFile = "D:\\Test\\";
  						
- 						String[] s=h1.displayFiles(strAllFile);
-						
+ 						List<String> list =h1.displayFiles(strAllFile);
+ 						for(int i=0;i<list.size();i++)
+ 						{
+ 						System.out.println(list.get(i));
+ 						}
  						
 					      break;
  							
  						case 2:
  							//Create checksum for this file
- 							for(int i=1;i<listOfFiles.length;i++)
- 				 			    //    for (Iterator<String> iterator = collection.iterator(); iterator.hasNext()) 
+ 							for(int i=1;i<list.size();i++)
  				 			        {
- 										 Iterator<String> iterator = collection.iterator();
+ 										// Iterator<String> iterator = collection.iterator();
  										 Iterator<String> iterator = list.iterator();
  				 						System.out.println("value= " + iterator.next());
  				 					
  				 						//{
  				 					//Create checksum for this file
- 			 							File file1 = new File("D:\\Test\\file1.txt");
- 			 							File file2 = new File("D:\\Test\\file2.txt");
+ 			 							File file1 = new File(list.get(i));
+ 			 		//					File file2 = new File("D:\\Test\\file2.txt");
+ 			 							
  			 							//Use MD5 algorithm
+ 			 						
  			 							MessageDigest md5Digest = MessageDigest.getInstance("MD5");
  			 							 
  			 							//Get the checksum
  			 							String checksum1 = getFileChecksum(md5Digest, file1);
- 			 							String checksum2 = getFileChecksum(md5Digest, file2);
+ 			 					//		String checksum2 = getFileChecksum(md5Digest, file2);
  			 					//		boolean isTwoEqual = h1.contentEquals(file1, file2);
  			 							
  			 							//see checksum
  			 							System.out.println("Hash of First File: "+checksum1);
- 			 							System.out.println("Hash of Second File: "+checksum2);
- 			 							if((checksum1).equals(checksum2))
+ 			 					//		System.out.println("Hash of Second File: "+checksum2);
+ 			 	/*						if((checksum1).equals(checksum2))
  			 							//if((checksum1).equals(cheksum2))
  			 							//Files.asByteSource(file1).contentEquals(Files.asByteSource(file2));
  			 							{
@@ -84,8 +88,9 @@ package com.examples.fileoperatins;
  			 								System.out.println("Given File is  Not-Duplicate..");	
  			 							}
  			 						
- 			 							
- 			 	
+ 				 			        }
+ 			 	*/
+ 				 			        }
  			 							break;
  			 						case 3:
  			 							System.out.println("Exit from program");
@@ -98,26 +103,28 @@ package com.examples.fileoperatins;
  			 			}
  			 	
  			 			  
- 			 			String[]  displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
+ 			 			List<String> displayFiles(String strAllFile) throws IOException , NoSuchAlgorithmException
  			 			 {
  			 				 File folder =new File(strAllFile);
  			 				 File[] listOfFiles = folder.listFiles();
  			 				
- 			 					System.out.println("Files location :"+folder);
- 			 					System.out.println("files length="+listOfFiles.length);
+ 			 				System.out.println("Files location :"+folder);
+ 			 				System.out.println("files length="+listOfFiles.length);
  			 					//	String str[] = new String[20];
- 			 	
+ 			 				List<String> list = new ArrayList<String>();
+ 			 				
  			 			
  			 	
- 			 					for(int i=1;i<listOfFiles.length;i++)
+ 			 					for(int i=0;i<list.size();i++)
  			 			 
  			 			        {
  			 					
  			 						if(listOfFiles[i].isFile())
  			 						{
- 			 							System.out.println(""+listOfFiles[i].getName());
+ //			 							System.out.println(""+listOfFiles[i].getName());
 // 			 							System.out.println(""+listOfFiles[i].getPath());
  			 						    System.out.println("Path of Files:=" +listOfFiles[i].getPath());
+ 			 						  list.add(" "+listOfFiles[i].getPath());
  			 						
  			 						}
  			 						else if(listOfFiles[i].isDirectory())
@@ -130,7 +137,8 @@ package com.examples.fileoperatins;
  			 						}
  			 					//	System.out.println("value of i :="+i);
  			 					}
- 			 			}
+ 			 			 
+ 			 					 			 			
  	 					
  	 					
  	 					for (File file : listOfFiles) 
@@ -142,8 +150,8 @@ package com.examples.fileoperatins;
  	 					  
  	 						
  	 					}
- 	 					System.out.println("value str :="+str[i]);
- 	 					return  listOfFiles(); //.toString();
+ 	 					//System.out.println("value str :="+str[i]);
+ 	 					return  list; 
  	 					
  	 					//listOfFiles[i].getPath();
  	 					
@@ -180,7 +188,9 @@ package com.examples.fileoperatins;
  	 			    }
  	 			     
  	 			    //return complete hash
- 	 			   return sb.toString();
+ 	 			 
+ 	 			    return sb.toString();
+ 	 			 
  	 			}
  	 		}
  			 					
