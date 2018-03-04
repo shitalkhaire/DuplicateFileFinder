@@ -21,7 +21,8 @@ package com.examples.fileoperatins;
  		public class HashValue 
  		{
  		//	int i;
- 			public static void main(String[] args) throws NoSuchAlgorithmException, IOException 
+ 			String Fpath;
+ 			public static void main(String[] args, MessageDigest digest, File file) throws NoSuchAlgorithmException, IOException 
  			{
  				
  			   
@@ -47,22 +48,23 @@ package com.examples.fileoperatins;
  						List<String> list =h1.displayFiles(strAllFile);
  						for(int i=0;i<list.size();i++)
  						{
- 						System.out.println(list.get(i));
+ 						//	 Fpath=list.get(i);
+ 						System.out.println(" "+list.get(i));
+ 						
  						}
  						
 					      break;
  							
  						case 2:
  							//Create checksum for this file
- 							for(int i=1;i<list.size();i++)
+ 							HashValue h2=new HashValue();
+ 							List<String> list1 =h2.getFileChecksum(digest,file);
+ 							for(int i=1;i<list1.size();i++)
  				 			        {
- 										// Iterator<String> iterator = collection.iterator();
- 										 Iterator<String> iterator = list.iterator();
- 				 						System.out.println("value= " + iterator.next());
  				 					
- 				 						//{
  				 					//Create checksum for this file
  			 							File file1 = new File(list.get(i));
+
  			 		//					File file2 = new File("D:\\Test\\file2.txt");
  			 							
  			 							//Use MD5 algorithm
@@ -71,14 +73,12 @@ package com.examples.fileoperatins;
  			 							 
  			 							//Get the checksum
  			 							String checksum1 = getFileChecksum(md5Digest, file1);
- 			 					//		String checksum2 = getFileChecksum(md5Digest, file2);
- 			 					//		boolean isTwoEqual = h1.contentEquals(file1, file2);
+ 			 							
  			 							
  			 							//see checksum
- 			 							System.out.println("Hash of First File: "+checksum1);
- 			 					//		System.out.println("Hash of Second File: "+checksum2);
- 			 	/*						if((checksum1).equals(checksum2))
- 			 							//if((checksum1).equals(cheksum2))
+ 			 							System.out.println("Hash of Files: "+checksum1);
+
+ 			 		/*	               //if((checksum1).equals(cheksum2))
  			 							//Files.asByteSource(file1).contentEquals(Files.asByteSource(file2));
  			 							{
  			 							 System.out.println("Given File is  Duplicate..");
@@ -150,16 +150,14 @@ package com.examples.fileoperatins;
  	 					  
  	 						
  	 					}
- 	 					//System.out.println("value str :="+str[i]);
  	 					return  list; 
  	 					
- 	 					//listOfFiles[i].getPath();
  	 					
  	 				//	return "Shital";
  	 					
  	 					
  	 			 }
- 	 		 static String getFileChecksum(MessageDigest digest, File file) throws IOException
+ 	 		 List<String> getFileChecksum(MessageDigest digest, File file) throws IOException
  	 			{
  	 			    //Get file input stream for reading the file content
  	 			    FileInputStream fis = new FileInputStream(file);
@@ -169,7 +167,8 @@ package com.examples.fileoperatins;
  	 			    int bytesCount = 0;
  	 			      
  	 			    //Read file data and update in message digest
- 	 			    while ((bytesCount = fis.read(byteArray)) != -1) {
+ 	 			    while ((bytesCount = fis.read(byteArray)) != -1) 
+ 	 			    {
  	 			        digest.update(byteArray, 0, bytesCount);
  	 			    };
  	 			     
@@ -181,16 +180,20 @@ package com.examples.fileoperatins;
  	 			     
  	 			    //This bytes[] has bytes in decimal format;
  	 			    //Convert it to hexadecimal format
+ 	 			  List<String> list1 = new ArrayList<String>();
  	 			  StringBuilder sb = new StringBuilder();
  	 			    for(int i=0; i< bytes.length ;i++)
  	 			    {
- 	 			        sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+ 	 			       Fpath=sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+ 	 			        list1.add(""+Fpath);
  	 			    }
  	 			     
+ 	 			    
  	 			    //return complete hash
  	 			 
- 	 			    return sb.toString();
+ 	 			   // return sb.toString();
  	 			 
+ 	 			    return list1;
  	 			}
  	 		}
  			 					
