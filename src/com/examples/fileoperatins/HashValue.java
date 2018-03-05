@@ -20,7 +20,7 @@ package com.examples.fileoperatins;
  	
  		public class HashValue 
  		{
- 		//	int i;
+ 		static //	int i;
  			String Fpath;
  			public static void main(String[] args, MessageDigest digest, File file) throws NoSuchAlgorithmException, IOException 
  			{
@@ -48,8 +48,8 @@ package com.examples.fileoperatins;
  						List<String> list =h1.displayFiles(strAllFile);
  						for(int i=0;i<list.size();i++)
  						{
- 						//	 Fpath=list.get(i);
- 						System.out.println(" "+list.get(i));
+ 							 Fpath=list.get(i);
+ 						System.out.println(" "+Fpath);
  						
  						}
  						
@@ -57,13 +57,17 @@ package com.examples.fileoperatins;
  							
  						case 2:
  							//Create checksum for this file
+ 							
  							HashValue h2=new HashValue();
- 							List<String> list1 =h2.getFileChecksum(digest,file);
+ 							
+ 							
+ 							List<String> list1 =h2.displayFiles(Fpath);
+ 							List<String> list2=h2.getFileChecksum(digest, file);
  							for(int i=1;i<list1.size();i++)
  				 			        {
  				 					
  				 					//Create checksum for this file
- 			 							File file1 = new File(list.get(i));
+ 			 							File file1 = new File(Fpath);
 
  			 		//					File file2 = new File("D:\\Test\\file2.txt");
  			 							
@@ -72,7 +76,7 @@ package com.examples.fileoperatins;
  			 							MessageDigest md5Digest = MessageDigest.getInstance("MD5");
  			 							 
  			 							//Get the checksum
- 			 							String checksum1 = getFileChecksum(md5Digest, file1);
+ 			 							List<String> checksum1 = getFileChecksum(md5Digest, file1);
  			 							
  			 							
  			 							//see checksum
@@ -157,7 +161,7 @@ package com.examples.fileoperatins;
  	 					
  	 					
  	 			 }
- 	 		 List<String> getFileChecksum(MessageDigest digest, File file) throws IOException
+ 	 		  static List<String> getFileChecksum(MessageDigest digest, File file) throws IOException
  	 			{
  	 			    //Get file input stream for reading the file content
  	 			    FileInputStream fis = new FileInputStream(file);
@@ -180,20 +184,27 @@ package com.examples.fileoperatins;
  	 			     
  	 			    //This bytes[] has bytes in decimal format;
  	 			    //Convert it to hexadecimal format
- 	 			  List<String> list1 = new ArrayList<String>();
+ 	 			   List<String> list3 = new ArrayList<String>();
+ 	 			   for(int i=0;i<list3.size();i++)
+ 	 			   {
+ 	 			      
+ 	 			   
+          
  	 			  StringBuilder sb = new StringBuilder();
- 	 			    for(int i=0; i< bytes.length ;i++)
+ 	 			    for(int j=0; j< bytes.length ;j++)
  	 			    {
- 	 			       Fpath=sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
- 	 			        list1.add(""+Fpath);
- 	 			    }
- 	 			     
  	 			    
+ 	 			       sb.append(Integer.toString((bytes[j] & 0xff) + 0x100, 16).substring(1));
+ 	 			       list3.add(" "+sb);
+ 	 			    }
+ 	 		     
+ 	 			  
+ 	 			   }
  	 			    //return complete hash
  	 			 
  	 			   // return sb.toString();
  	 			 
- 	 			    return list1;
+ 	 			    return list3;
  	 			}
  	 		}
  			 					
