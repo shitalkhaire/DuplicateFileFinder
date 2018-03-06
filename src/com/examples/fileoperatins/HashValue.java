@@ -21,7 +21,7 @@ import java.util.List;
 		public class HashValue 
 		{
 		static //	int i;
-			String Fpath;
+			String Fpath,HoldPath;
 			public static void main(String[] args) throws NoSuchAlgorithmException, IOException 
 			{
 				
@@ -36,8 +36,9 @@ import java.util.List;
 				{
 					System.out.println("Enter your choice:=");
 					BufferedReader b=new BufferedReader(new InputStreamReader(System.in));
-					//System.out.println(+choice);
-					 choice=Integer.parseInt(b.readLine());
+					 //System.out.println(+choice);
+					
+					choice=Integer.parseInt(b.readLine());
 					 // this variable declare outside case because it should be accessible in case 2
 					 List<String> list ;
 					 HashValue h1=new HashValue();
@@ -72,7 +73,7 @@ import java.util.List;
 			 							MessageDigest md5Digest = MessageDigest.getInstance("MD5");
 			 							 
 			 							//Get the checksum
-			 							List<String> Checksum1 = getFileChecksum(md5Digest, file1);
+			 							List<String> Checksum1 = getFileChecksum(md5Digest,file1);
 			 							
 			 							
 			 							//see checksum
@@ -115,7 +116,7 @@ import java.util.List;
 			 				
 			 			
 			 	
-			 					for(int i=0;i<list.size();i++)
+			 					for(int i=0;i<listOfFiles.length;i++)
 			 			 
 			 			        {
 			 					
@@ -123,15 +124,16 @@ import java.util.List;
 			 						{
 //			 							System.out.println(""+listOfFiles[i].getName());
 //			 							System.out.println(""+listOfFiles[i].getPath());
-			 						    System.out.println("Path of Files:=" +listOfFiles[i].getPath());
-			 						  list.add(" "+listOfFiles[i].getPath());
+			 		//				    System.out.println("Path of Files:=" +listOfFiles[i].getPath());
+			 					       HoldPath=listOfFiles[i].getPath();		
+			 						  list.add(" "+HoldPath);
 			 						
 			 						}
 			 						else if(listOfFiles[i].isDirectory())
 			 	
 			 						{
-			 							System.out.println("Directory location:"+listOfFiles[i]);
-			 							System.out.println("\nDirectory:\n"+listOfFiles[i].getName());
+			 						//	System.out.println("Directory location:"+listOfFiles[i]);
+			 							System.out.println(listOfFiles[i].getName());
 			 							
 			 	
 			 						}
