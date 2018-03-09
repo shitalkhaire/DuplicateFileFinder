@@ -21,7 +21,7 @@ import java.util.List;
 		public class HashValue 
 		{
 		static //	int i;
-			String Fpath,HoldPath;
+			String Fpath,HoldPath,Fpath2;
 			public static void main(String[] args) throws NoSuchAlgorithmException, IOException 
 			{
 				
@@ -73,13 +73,14 @@ import java.util.List;
 			 							MessageDigest md5Digest = MessageDigest.getInstance("MD5");
 			 							 
 			 							//Get the checksum
-			 							List<String> Checksum1 = getFileChecksum(md5Digest,file1);
+			 							String Checksum1 = getFileChecksum(md5Digest,file1);
 			 							
 			 							
 			 							//see checksum
 			 							System.out.println("Hash of Files: "+Checksum1);
 
-			 		/*	               //if((checksum1).equals(cheksum2))
+			 //							Files.hash(file1, HashValue.MD5()); // or md5(), or sha256(), or...
+			 	/*						if((checksum1).equals(cheksum2))
 			 							//Files.asByteSource(file1).contentEquals(Files.asByteSource(file2));
 			 							{
 			 							 System.out.println("Given File is  Duplicate..");
@@ -126,7 +127,7 @@ import java.util.List;
 //			 							System.out.println(""+listOfFiles[i].getPath());
 			 		//				    System.out.println("Path of Files:=" +listOfFiles[i].getPath());
 			 					       HoldPath=listOfFiles[i].getPath();		
-			 						  list.add(" "+HoldPath);
+			 						  list.add(""+HoldPath);
 			 						
 			 						}
 			 						else if(listOfFiles[i].isDirectory())
@@ -141,7 +142,7 @@ import java.util.List;
 			 					}
 			 			 
 			 					 			 			
-	 					
+	 			//		System.out.println("List Contents Are:=");
 	 					
 	 					for (File file : listOfFiles) 
 	 					{
@@ -159,49 +160,37 @@ import java.util.List;
 	 					
 	 					
 	 			 }
-	 		  static List<String> getFileChecksum(MessageDigest digest, File file) throws IOException
-	 			{
-	 			    //Get file input stream for reading the file content
-	 			    FileInputStream fis = new FileInputStream(file);
-	 			     
-	 			    //Create byte array to read data in chunks
-	 			    byte[] byteArray = new byte[1024];
-	 			    int bytesCount = 0;
-	 			      
-	 			    //Read file data and update in message digest
-	 			    while ((bytesCount = fis.read(byteArray)) != -1) 
-	 			    {
-	 			        digest.update(byteArray, 0, bytesCount);
-	 			    };
-	 			     
-	 			    //close the stream; We don't need it now.
-	 			    fis.close();
-	 			     
-	 			    //Get the hash's bytes
-	 			    byte[] bytes = digest.digest();
-	 			     
-	 			    //This bytes[] has bytes in decimal format;
-	 			    //Convert it to hexadecimal format
-	 			   List<String> list3 = new ArrayList<String>();
-	 			   for(int i=0;i<list3.size();i++)
-	 			   {
-	 			      
-	 			   
-         
-	 			  StringBuilder sb = new StringBuilder();
-	 			    for(int j=0; j< bytes.length ;j++)
-	 			    {
-	 			    
-	 			       sb.append(Integer.toString((bytes[j] & 0xff) + 0x100, 16).substring(1));
-	 			       list3.add(" "+sb);
-	 			    }
-	 		     
-	 			  
-	 			   }
-	 			    //return complete hash
-	 			 
-	 			   // return sb.toString();
-	 			 
-	 			    return list3;
-	 			}
+			 			private static String getFileChecksum(MessageDigest digest, File file) throws IOException
+			 			{
+			 			    //Get file input stream for reading the file content
+			 			    FileInputStream fis = new FileInputStream(file);
+			 			     
+			 			    //Create byte array to read data in chunks
+			 			    byte[] byteArray = new byte[1024];
+			 			    int bytesCount = 0;
+			 			      
+			 			    //Read file data and update in message digest
+			 			    while ((bytesCount = fis.read(byteArray)) != -1) {
+			 			        digest.update(byteArray, 0, bytesCount);
+			 			    };
+			 			     
+			 			    //close the stream; We don't need it now.
+			 			    fis.close();
+			 			     
+			 			    //Get the hash's bytes
+			 			    byte[] bytes = digest.digest();
+			 			     
+			 			    //This bytes[] has bytes in decimal format;
+			 			    //Convert it to hexadecimal format
+			 			    StringBuilder sb = new StringBuilder();
+			 			    for(int i=0; i< bytes.length ;i++)
+			 			    {
+			 			        sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			 			    }
+			 			     
+			 			    //return complete hash
+			 			   return sb.toString();
+			 			}
+
 	 		}
+		
