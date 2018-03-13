@@ -74,8 +74,7 @@ import java.util.List;
 			 							 
 			 							//Get the checksum
 			 							String Checksum1 = getFileChecksum(md5Digest,file1);
-			 							
-			 							
+			 						    list.add(Checksum1);
 			 							//see checksum
 			 							System.out.println("Hash of Files: "+Checksum1);
 
