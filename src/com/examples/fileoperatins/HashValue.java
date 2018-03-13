@@ -14,14 +14,18 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 	
 		public class HashValue 
 		{
 		static //	int i;
 			String Fpath,HoldPath,Fpath2;
+			String ans;
 			public static void main(String[] args) throws NoSuchAlgorithmException, IOException 
 			{
 				
@@ -73,11 +77,26 @@ import java.util.List;
 			 							MessageDigest md5Digest = MessageDigest.getInstance("MD5");
 			 							 
 			 							//Get the checksum
-			 							String Checksum1 = getFileChecksum(md5Digest,file1);
-			 						    list.add(Checksum1);
+			 							String[] Checksum1 = getFileChecksum(md5Digest,file1);
+			 						  //  list.add(Checksum1);
 			 							//see checksum
 			 							System.out.println("Hash of Files: "+Checksum1);
-
+			 							System.out.println("Print Duplicate Files...");
+			 							for(int s=0;s<Checksum1.length;s++)
+			 							{
+			 								if(Checksum1[s]==Checksum1[s+1])
+			 								{
+			 									System.out.println("Given file is duplicate.");
+			 								}
+			 							}
+			 					
+			 							
+			 					/*		Set<String> uniqueSet = new HashSet<String>(list);
+			 							for (String temp : uniqueSet)
+			 							{
+			 								System.out.println(temp + ": " + Collections.frequency(list, temp));
+			 								
+			 							}*/
 			 //							Files.hash(file1, HashValue.MD5()); // or md5(), or sha256(), or...
 			 	/*						if((checksum1).equals(cheksum2))
 			 							//Files.asByteSource(file1).contentEquals(Files.asByteSource(file2));
@@ -92,7 +111,7 @@ import java.util.List;
 				 			        }
 			 	*/
 				 			        }
-			 							break;
+									break;
 			 						case 3:
 			 							System.out.println("Exit from program");
 			 	
@@ -159,7 +178,7 @@ import java.util.List;
 	 					
 	 					
 	 			 }
-			 			private static String getFileChecksum(MessageDigest digest, File file) throws IOException
+			 			private static String[] getFileChecksum(MessageDigest digest, File file) throws IOException
 			 			{
 			 			    //Get file input stream for reading the file content
 			 			    FileInputStream fis = new FileInputStream(file);
@@ -184,11 +203,12 @@ import java.util.List;
 			 			    StringBuilder sb = new StringBuilder();
 			 			    for(int i=0; i< bytes.length ;i++)
 			 			    {
-			 			        sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			 			      ans=  sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
 			 			    }
 			 			     
 			 			    //return complete hash
-			 			   return sb.toString();
+			 			   
+			 			    return ans.toString();
 			 			}
 
 	 		}
