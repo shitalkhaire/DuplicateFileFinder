@@ -1,3 +1,4 @@
+
 package com.examples.fileoperatins;
  	
 import java.io.BufferedReader;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 	
-		public class HashValue 
+		public class NewClass 
 		{
 		static //	int i;
 			String Fpath,HoldPath,Fpath2;
@@ -178,7 +179,7 @@ import java.util.Set;
 	 					
 	 					
 	 			 }
-			 			 static String getFileChecksum(MessageDigest digest, File file) throws IOException
+			 			private static String[] getFileChecksum(MessageDigest digest, File file) throws IOException
 			 			{
 			 			    //Get file input stream for reading the file content
 			 			    FileInputStream fis = new FileInputStream(file);
@@ -203,13 +204,14 @@ import java.util.Set;
 			 			    StringBuilder sb = new StringBuilder();
 			 			    for(int i=0; i< bytes.length ;i++)
 			 			    {
-			 			        sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			 			      //ans=//
+			 			    	sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
 			 			    }
 			 			     
 			 			    //return complete hash
-			 			   return sb.toString();
+			 			   
+			 			    return sb;
 			 			}
-		}
 
-	 		
+	 		}
 		
