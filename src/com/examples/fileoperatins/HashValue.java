@@ -31,6 +31,7 @@ import java.util.Set;
 				
 			   
 				// Program Using SwitchCase..
+				System.out.println("Welcome...");
 				System.out.println("1.Display All Files");
 				System.out.println("2.Display  HashValue of Files");
 				System.out.println("3.Quit..");
