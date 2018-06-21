@@ -9,17 +9,20 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.filechooser.FileSystemView;
 	
 	public class DirectoryHash
 	{
-	static String Fpath;
+	
+	static	String nxt,GivenDrives,Rpath;
+	static  List<String> list = new ArrayList<String>();
 		public static void main(String[] args) throws IOException, NoSuchAlgorithmException
 		{
 		
 			File[] paths;
-			FileSystemView fsv = FileSystemView.getFileSystemView();
+		//	FileSystemView fsv = FileSystemView.getFileSystemView();
 
 			// returns pathnames for files and directory
 			paths = File.listRoots();
@@ -28,28 +31,42 @@ import javax.swing.filechooser.FileSystemView;
 			for(int i =1; i < roots.length-1 ; i++)
 			    System.out.println("\tRoot["+i+"]:" + roots[i]);
 			
-			
+	/*		
 			System.out.println("Enter Directory Name:=");
 			BufferedReader b=new BufferedReader(new InputStreamReader(System.in));
 	//		String DrName = b.readLine();
 			
-		//	DirectoryHash h=new DirectoryHash();
-	/*		for(int i=3;i<roots.length-2;i++)
+		
+			for(int i=3;i<roots.length-2;i++)
 			{
 				// Fpath=roots.get(i);
 				 String Rpath;
 				Rpath=roots[i].getPath();
 				List<String> list =h.displayFiles(Rpath);
 			} */
-			
-			List<String> list;
-			DirectoryHash h=new DirectoryHash();
-			String Rpath = b.readLine();
-			list =h.displayFiles(Rpath);
-			for(int i=0;i<list.size();i++)
+			System.out.println("Enter Directories and Exit to exit:=>");
+			Scanner sc = new Scanner(System.in);
+		//	List<String> list;
+		//	list= new ArrayList<String>();
+
+			while(true)
 			{
-				 Fpath=list.get(i);
+			 nxt=  sc.next();
+			list.add(nxt);
+
+			if (nxt.equals("Exit"))
+			{
+			  break;
 			}
+		 
+			}
+			 System.out.println(""+list);
+			 for(int k=0;k<list.size();k++)
+		 	    {
+				 	DirectoryHash h=new DirectoryHash();
+				 	Rpath=list.get(k);
+				 	list =h.displayFiles(Rpath);
+		 	    }			
 			
 			MessageDigest md5Digest = MessageDigest.getInstance("MD5");
 		for(int i=0;i<list.size();i++)
@@ -58,7 +75,7 @@ import javax.swing.filechooser.FileSystemView;
  			{
  								 			
  					   //Finding checksum for 1st file.
-						Fpath=list.get(i);
+ 							String Fpath=list.get(i);
 							File file1 = new File(Fpath);
 							String Checksum1 = getFileChecksum(md5Digest,file1);
 						   
@@ -86,7 +103,7 @@ import javax.swing.filechooser.FileSystemView;
 			 File file= new File(Rpath);
 			 File[] listOfFiles = file.listFiles();
 			 
-			 List<String> list = new ArrayList<String>();
+		//	 List<String> list = new ArrayList<String>();
 			 
 			 if(listOfFiles != null)
 	         {
