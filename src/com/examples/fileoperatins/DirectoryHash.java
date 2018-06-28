@@ -91,52 +91,49 @@
 													List<String> displayFiles(String Rpath) throws IOException , NoSuchAlgorithmException
 													 {
 														 File file= new File(Rpath);
+														System.out.println("Started Process For==>"+file.getName());
 														 File[] listOfFiles = file.listFiles();
 														 
-													//	 List<String> list = new ArrayList<String>();
-														//$RECYCLE
-												/*	 	 if (file.isFile() && !file.listFiles().equals("$RECYCLE.BIN"))
-													 	 {
-													 		 return null;
-											 	          }			
-												       	*/	 
-														 
-												/*		 if(file.isHidden())
+													
+														 if(listOfFiles != null)
 														 {
-															 return null;
-														 }   */
-														 if(listOfFiles != null)// && file.listFiles().equals("$RECYCLE.BIN") || file.isHidden() == file.getName().equals("System Volume Information"))
-														 {
-															 //							 if(file.isFile()!= file.listFiles().equals("$RECYCLE.BIN")|| file.isFile()!= file.listFiles().equals("System Volume Information") )
-								//							 if(file.isHidden() != file.getName().equals("System Volume Information") )
 												
 														System.out.println("Files location :"+file);
 														System.out.println("files length="+listOfFiles.length);			
 														
 														 
-											            for(int i=0;i<listOfFiles.length;i++)
+ 											            for(int i=0;i<listOfFiles.length;i++)
 													 
 													        {
-											            	File fTemp = listOfFiles[i];
+ 											            	File fTemp = listOfFiles[i];
 											           // 	if(fTemp.getName().equals("$RECYCLE.BIN") || fTemp.getName().equals("System Volume Information"))
 											            	//if(fTemp.getName().equals("$RECYCLE.BIN")!=true || fTemp.getName().equals("System Volume Information")!=true)
-											            	if(!fTemp.getName().equals("$RECYCLE.BIN") || !fTemp.getName().equals("System Volume Information"))
+ 											            	if(fTemp.getName().equals("$RECYCLE.BIN")==true || fTemp.getName().equals("System Volume Information")==true 
+ 											            			|| fTemp.getName().equals("software")==true || fTemp.getName().equals("Shital")==true
+ 											            			|| fTemp.getName().equals("Ddrives data")==true
+ 											            			
+ 											            			)
 											            	{
-																if(listOfFiles[i].isFile())
+																continue;
+											            	}else {
+											            		
+											            		if(listOfFiles[i].isFile())
 																{
 																  String HoldPath=listOfFiles[i].getPath();		
 																  list.add(""+HoldPath);
-																  System.out.println(""+listOfFiles[i].getPath());
+																  System.out.println("File Added="+listOfFiles[i].getPath());
 																}	 
 													        
 																else if(listOfFiles[i].isDirectory())
 											
 																{
+																	System.out.println("Directory Found= "+listOfFiles[i].getName());
 																	System.out.println(listOfFiles[i].getName());
 																	String subfolder=listOfFiles[i].getPath();
 																	List<String> tempList;
 											 						tempList=displayFiles(subfolder);
-																	list.addAll(tempList);
+											 						
+																//	list.addAll(tempList);
 																	System.out.println(listOfFiles[i].getPath());
 																}
 											            	}
@@ -146,7 +143,7 @@
 												
 												
 														 
-														System.out.println("Drives Data:"+list);
+														System.out.println("List Data="+list);
 												    	return list;
 													 }
 											
