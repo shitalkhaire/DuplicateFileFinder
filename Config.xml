@@ -1,0 +1,15 @@
+<Settings>
+<!--
+<Key name="ExcludeFolder">,software,Recycle bin</Key>
+<Key name="Drives">D:\,E:\,Exit</Key>
+-->
+<ExcludeFolders>
+		<name>$RECYCLE.BIN</name>
+		<name>System Volume Information</name>
+		<name>Software</name>
+</ExcludeFolders>
+<Drives name="DisplayDrives">
+	<drive>D:\</drive>
+	<drive>E:\</drive>
+</Drives>
+</Settings>

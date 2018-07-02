@@ -10,6 +10,9 @@
 			import java.util.List;
 			import java.util.Scanner;
 			import javax.swing.filechooser.FileSystemView;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 											
 												public class DirectoryHash
 												{
@@ -17,7 +20,7 @@
 												static	String nxt,GivenDrives,Rpath;
 												static  List<String> list1 = new ArrayList<String>();
 												static  List<String> list = new ArrayList<String>();
-													public static void main(String[] args) throws IOException, NoSuchAlgorithmException
+													public static void main(String[] args) throws IOException, NoSuchAlgorithmException, SAXException, ParserConfigurationException
 													{
 													
 													//	FileSystemView fsv = FileSystemView.getFileSystemView();
@@ -88,9 +91,13 @@
 														
 													}
 													// displayFiles method
-													List<String> displayFiles(String Rpath) throws IOException , NoSuchAlgorithmException
+													List<String> displayFiles(String Rpath) throws IOException , NoSuchAlgorithmException, SAXException, ParserConfigurationException
 													 {
-														 File file= new File(Rpath);
+														configurationClass obj = new configurationClass ("Config.xml");
+														ArrayList<String> strExclude=obj.getExcludeFolders();
+												//		System.out.println();
+														
+														File file= new File(Rpath);
 														System.out.println("Started Process For==>"+file.getName());
 														 File[] listOfFiles = file.listFiles();
 														 
