@@ -7,9 +7,13 @@
 		<name>$RECYCLE.BIN</name>
 		<name>System Volume Information</name>
 		<name>Software</name>
+		<name>at</name>
+		<name>German</name>
+		<name>PhoneBackup</name>
 </ExcludeFolders>
-<Drives name="DisplayDrives">
+<DisplayDrives>
 	<drive>D:\</drive>
 	<drive>E:\</drive>
-</Drives>
+</DisplayDrives>
+
 </Settings>

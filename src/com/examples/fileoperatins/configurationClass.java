@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
 
 public class configurationClass
 {
-	NodeList nlExcludeFolder;
+	NodeList nlExcludeFolder,drvList;
 	 configurationClass(String strConfFile) throws ParserConfigurationException, SAXException, IOException
 	 {
 		 File fXmlFile = new File(strConfFile);
@@ -29,6 +29,7 @@ public class configurationClass
 
 			
 			nlExcludeFolder = doc.getElementsByTagName("ExcludeFolders");
+			drvList = doc.getElementsByTagName("Drives");
 		 
 	 }
 	
@@ -42,25 +43,45 @@ public	ArrayList<String> getExcludeFolders( )
 			Element eElement = (Element)nExcludeFolder;
 			NodeList  nName = eElement.getElementsByTagName("name");
 			
-			System.out.println("Exclude Folders..");
+		//	System.out.println("Exclude Folders..");
 
 			for (int j = 0; j < nName.getLength(); j++) {
 				
 				Node node= nName.item(j);
-				System.out.println(" "+node.getTextContent());
-				
-				
+	//			System.out.println(" "+node.getTextContent());
 				list.add(node.getTextContent());
 				
 			}
+	}
+		return list;
+	}
+			public	ArrayList<String> displayDrives( )
+			{
+				ArrayList <String> list = new ArrayList<String>();
+				for (int i = 0; i < drvList.getLength(); i++) {
+					
+					Node ndrive= drvList.item(i);
+					Element eElement = (Element)ndrive;
+					NodeList  nName = eElement.getElementsByTagName("drive");
+					
+				//	System.out.println("Display Drives..");
+
+					for (int j = 0; j < nName.getLength(); j++) {
+						
+						Node node= nName.item(j);
+			//			System.out.println(" "+node.getTextContent());
+						list.add(node.getTextContent());
+						
+					}
 			
 	}
 		
 		return list;
+		
 				
 	}
 }
-
+	
 			
 			
 			
