@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 	public class DirectoryHash
 	{
 		static	String DriveList,GivenDrives,Rpath;
-		static  List<String> list1 = new ArrayList<String>();
+		static ArrayList<String> arrlist = new ArrayList<String>();
 		static  List<String> list = new ArrayList<String>();
 		
 		public static void main(String[] args) throws IOException, NoSuchAlgorithmException, SAXException, ParserConfigurationException
@@ -26,24 +26,27 @@ import org.xml.sax.SAXException;
 			System.out.println("\t\n List Of Drives...");
 			for(int i =1; i < roots.length-1 ; i++)
 			System.out.println("\tRoot["+i+"]:" + roots[i]);
-			//object is Created of configurationClass 
+			//object is Created of configurationClass
+			
 			configurationClass obj = new configurationClass ("Config.xml");
-	//		System.out.println("Enter Directories and Exit to exit:=>");
+
+			//		System.out.println("Enter Directories and Exit to exit:=>");
 			ArrayList<String>arrlist = obj.displayDrives();
-		//	Scanner sc = new Scanner(System.in);
+			
+			//	Scanner sc = new Scanner(System.in);
 			//while(true)
       for(int i=0;i< arrlist.size();i++)
 			{
 				 DriveList=  arrlist.get(i);
-				 arrlist.add(DriveList);
-		/*	if (nxt.equals("Exit"))
-				{
-				  break;
-				}
-				list1.add(nxt);
-			}*/
-			System.out.println(""+DriveList);
-			List<String> lDriveFiles=new ArrayList<String>();
+			//	 arrlist.add(""+DriveList);
+				 
+				 
+			//	 System.out.println(""+arrlist);
+					
+			}
+//  	System.out.println(""+arrlist);
+  	
+				List<String> lDriveFiles=new ArrayList<String>();
 			for(int k=0;k<lDriveFiles.size();k++)
 			{
 				DirectoryHash h=new DirectoryHash();
@@ -74,9 +77,9 @@ import org.xml.sax.SAXException;
 						 }
 					}	                   
 	 			}
-	 	    }
+	 	    
 			}
-		}
+	}
 	// displayFiles method
 	List<String> displayFiles(String Rpath) throws IOException , NoSuchAlgorithmException, SAXException, ParserConfigurationException
 	{

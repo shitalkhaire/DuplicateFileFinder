@@ -27,13 +27,48 @@ public class configurationClass
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
 
+//			nlExcludeFolder = doc.getElementsByTagName("ExcludeFolders");
+			drvList = doc.getElementsByTagName("DisplayDrives");
+	 }
+	 public	ArrayList<String> displayDrives( )
+		{
+			ArrayList <String> drvlist = new ArrayList<String>();
+			for (int i = 0; i < drvList.getLength(); i++)
+			{
+				
+				Node ndrive= drvList.item(i);
+				Element eElement = (Element)ndrive;
+				NodeList  nName = eElement.getElementsByTagName("drive");
+				
+			//	System.out.println("Display Drives..");
+
+				for (int j = 0; j < nName.getLength(); j++) 
+				{
+					
+					Node node= nName.item(j);
+		//			System.out.println(" "+node.getTextContent());
+					drvlist.add(node.getTextContent());
+					
+				}
+		
+}
+	System.out.println("Drives list is:=>"+drvlist);
+	return drvlist;
+	
 			
+}
+	 configurationClass(String strConfFile) throws ParserConfigurationException, SAXException, IOException
+	 {
+		 File fXmlFile = new File(strConfFile);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(fXmlFile);
+			doc.getDocumentElement().normalize();
+
 			nlExcludeFolder = doc.getElementsByTagName("ExcludeFolders");
-			drvList = doc.getElementsByTagName("Drives");
-		 
+//			drvList = doc.getElementsByTagName("DisplayDrives");
 	 }
 	
-
 public	ArrayList<String> getExcludeFolders( )
 	{
 		ArrayList <String> list = new ArrayList<String>();
@@ -55,31 +90,7 @@ public	ArrayList<String> getExcludeFolders( )
 	}
 		return list;
 	}
-			public	ArrayList<String> displayDrives( )
-			{
-				ArrayList <String> list = new ArrayList<String>();
-				for (int i = 0; i < drvList.getLength(); i++) {
-					
-					Node ndrive= drvList.item(i);
-					Element eElement = (Element)ndrive;
-					NodeList  nName = eElement.getElementsByTagName("drive");
-					
-				//	System.out.println("Display Drives..");
-
-					for (int j = 0; j < nName.getLength(); j++) {
-						
-						Node node= nName.item(j);
-			//			System.out.println(" "+node.getTextContent());
-						list.add(node.getTextContent());
-						
-					}
 			
-	}
-		
-		return list;
-		
-				
-	}
 }
 	
 			
