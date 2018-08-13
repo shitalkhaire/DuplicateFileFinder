@@ -27,12 +27,12 @@ public class configurationClass
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
 
-//			nlExcludeFolder = doc.getElementsByTagName("ExcludeFolders");
+		nlExcludeFolder = doc.getElementsByTagName("ExcludeFolders");
 			drvList = doc.getElementsByTagName("DisplayDrives");
 	 }
 	 public	ArrayList<String> displayDrives( )
 		{
-			ArrayList <String> drvlist = new ArrayList<String>();
+			ArrayList <String> drvlist5 = new ArrayList<String>();
 			for (int i = 0; i < drvList.getLength(); i++)
 			{
 				
@@ -47,28 +47,17 @@ public class configurationClass
 					
 					Node node= nName.item(j);
 		//			System.out.println(" "+node.getTextContent());
-					drvlist.add(node.getTextContent());
+					drvlist5.add(node.getTextContent());
 					
 				}
 		
 }
-	System.out.println("Drives list is:=>"+drvlist);
-	return drvlist;
+	System.out.println("Drives list is:=>"+drvlist5);
+	return drvlist5;
 	
 			
 }
-	 configurationClass(String strConfFile) throws ParserConfigurationException, SAXException, IOException
-	 {
-		 File fXmlFile = new File(strConfFile);
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(fXmlFile);
-			doc.getDocumentElement().normalize();
-
-			nlExcludeFolder = doc.getElementsByTagName("ExcludeFolders");
-//			drvList = doc.getElementsByTagName("DisplayDrives");
-	 }
-	
+	 	
 public	ArrayList<String> getExcludeFolders( )
 	{
 		ArrayList <String> list = new ArrayList<String>();
@@ -88,6 +77,7 @@ public	ArrayList<String> getExcludeFolders( )
 				
 			}
 	}
+		System.out.println("Exclude Folders :"+list);
 		return list;
 	}
 			

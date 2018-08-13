@@ -31,40 +31,33 @@ import org.xml.sax.SAXException;
 			configurationClass obj = new configurationClass ("Config.xml");
 
 			//		System.out.println("Enter Directories and Exit to exit:=>");
-			ArrayList<String>arrlist = obj.displayDrives();
+			ArrayList<String> lDriveFiles = obj.displayDrives();
 			
+			ArrayList<String>ExcludeList =obj.getExcludeFolders();
 			//	Scanner sc = new Scanner(System.in);
 			//while(true)
-      for(int i=0;i< arrlist.size();i++)
-			{
-				 DriveList=  arrlist.get(i);
-			//	 arrlist.add(""+DriveList);
-				 
-				 
-			//	 System.out.println(""+arrlist);
-					
-			}
+      
 //  	System.out.println(""+arrlist);
-  	
-				List<String> lDriveFiles=new ArrayList<String>();
+			List<String> lFiles = new ArrayList<>();
 			for(int k=0;k<lDriveFiles.size();k++)
 			{
 				DirectoryHash h=new DirectoryHash();
 			 	Rpath=lDriveFiles.get(k);
-			 	lDriveFiles =h.displayFiles(Rpath);
+			 	lFiles =h.displayFiles(Rpath);
 									
 			}
 			MessageDigest md5Digest = MessageDigest.getInstance("MD5");
-			for(int p=0;p<lDriveFiles.size();p++)
+			System.out.println("ldriv "+lFiles);
+			for(int p=0;p<lFiles.size();p++)
 			{
-				for(int q=p;q<lDriveFiles.size();q++)
+				for(int q=p;q<lFiles.size();q++)
 				{
 				   //Finding checksum for 1st file.
-					String Fpath=lDriveFiles.get(p);
+					String Fpath=lFiles.get(p);
 					File file1 = new File(Fpath);
 					String Checksum1 = getFileChecksum(md5Digest,file1);
 					//Finding checksum for 2nd file.
-					Fpath=lDriveFiles.get(q);
+					Fpath=lFiles.get(q);
 					File file2 = new File(Fpath);
 					String Checksum2 = getFileChecksum(md5Digest,file2);
 					// Comparison between two checksum values
@@ -104,7 +97,7 @@ import org.xml.sax.SAXException;
          	if(LExclude.contains(fTemp.getName()))
     // 			|| fTemp.getName().equals("software")==true || fTemp.getName().equals("Shital")==true|| fTemp.getName().equals("Ddrives data")==true)
 				{
-         		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Name Of Exclude Folders =>"+fTemp.getName());	
+         		System.out.println(" "+fTemp.getName());	
          		continue;
 				}
          	else {
@@ -133,6 +126,7 @@ return list;
  static String getFileChecksum(MessageDigest digest, File file) throws IOException
 {
    //Get file input stream for reading the file content
+//	 System.out.println("jjjjjjjjj"+file.getName());
     FileInputStream fis = new FileInputStream(file);
 
     //Create byte array to read data in chunks
