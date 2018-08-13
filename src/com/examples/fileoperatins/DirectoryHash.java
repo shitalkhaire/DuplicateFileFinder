@@ -30,14 +30,9 @@ import org.xml.sax.SAXException;
 			
 			configurationClass obj = new configurationClass ("Config.xml");
 
-			//		System.out.println("Enter Directories and Exit to exit:=>");
 			ArrayList<String> lDriveFiles = obj.displayDrives();
 			
 			ArrayList<String>ExcludeList =obj.getExcludeFolders();
-			//	Scanner sc = new Scanner(System.in);
-			//while(true)
-      
-//  	System.out.println(""+arrlist);
 			List<String> lFiles = new ArrayList<>();
 			for(int k=0;k<lDriveFiles.size();k++)
 			{
