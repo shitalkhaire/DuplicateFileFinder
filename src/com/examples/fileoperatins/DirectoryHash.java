@@ -15,8 +15,7 @@ import org.xml.sax.SAXException;
 											
 	public class DirectoryHash
 	{
-		static	String DriveList,GivenDrives,Rpath;
-		static ArrayList<String> arrlist = new ArrayList<String>();
+		static	String DriveList,Rpath;
 		static  List<String> list = new ArrayList<String>();
 		
 		public static void main(String[] args) throws IOException, NoSuchAlgorithmException, SAXException, ParserConfigurationException

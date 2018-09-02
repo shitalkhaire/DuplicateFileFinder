@@ -32,7 +32,7 @@ public class configurationClass
 	 }
 	 public	ArrayList<String> displayDrives( )
 		{
-			ArrayList <String> drvlist5 = new ArrayList<String>();
+			ArrayList <String> list1 = new ArrayList<String>();
 			for (int i = 0; i < drvList.getLength(); i++)
 			{
 				
@@ -47,20 +47,20 @@ public class configurationClass
 					
 					Node node= nName.item(j);
 		//			System.out.println(" "+node.getTextContent());
-					drvlist5.add(node.getTextContent());
+					list1.add(node.getTextContent());
 					
 				}
 		
 }
-	System.out.println("Drives list is:=>"+drvlist5);
-	return drvlist5;
+	System.out.println("Drives list is:=>"+list1);
+	return list1;
 	
 			
 }
 	 	
 public	ArrayList<String> getExcludeFolders( )
 	{
-		ArrayList <String> list = new ArrayList<String>();
+		ArrayList <String> list2 = new ArrayList<String>();
 		for (int i = 0; i < nlExcludeFolder.getLength(); i++) {
 			
 			Node nExcludeFolder= nlExcludeFolder.item(i);
@@ -73,12 +73,12 @@ public	ArrayList<String> getExcludeFolders( )
 				
 				Node node= nName.item(j);
 	//			System.out.println(" "+node.getTextContent());
-				list.add(node.getTextContent());
+				list2.add(node.getTextContent());
 				
 			}
 	}
-		System.out.println("Exclude Folders :"+list);
-		return list;
+		System.out.println("Exclude Folders :"+list2);
+		return list2;
 	}
 			
 }
