@@ -30,7 +30,7 @@ import org.xml.sax.SAXException;
 			configurationClass obj = new configurationClass ("Config.xml");
 
 			ArrayList<String> lDriveFiles = obj.displayDrives();
-			
+			 
 			ArrayList<String>ExcludeList =obj.getExcludeFolders();
 			List<String> lFiles = new ArrayList<>();
 			for(int k=0;k<lDriveFiles.size();k++)
