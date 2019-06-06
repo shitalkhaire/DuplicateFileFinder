@@ -15,11 +15,18 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
+/* 
+ * 	Class reads config.xml file.
+ * 	It has fXmlFile object which create new instance of configurationClass by using constructor configurationClass(String strConfFile),
+ *  strConfFile is nothing but config.xml file.
+ * 	Here we used DocumentBuilder methods for reading the xml file's data.
+ 
+ */
 public class configurationClass
 {
-	NodeList nlExcludeFolder,drvList;
-	 configurationClass(String strConfFile) throws ParserConfigurationException, SAXException, IOException
+	NodeList nlExcludeFolder,drvList;//this NodeList variables we can access outside the class.
+	
+	 configurationClass(String strConfFile) throws ParserConfigurationException, SAXException, IOException // constructor
 	 {
 		 File fXmlFile = new File(strConfFile);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -27,10 +34,11 @@ public class configurationClass
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
 
-		nlExcludeFolder = doc.getElementsByTagName("ExcludeFolders");
-			drvList = doc.getElementsByTagName("DisplayDrives");
+		 nlExcludeFolder = doc.getElementsByTagName("ExcludeFolders");
+		 drvList = doc.getElementsByTagName("DisplayDrives");
 	 }
-	 public	ArrayList<String> displayDrives( )
+	 // here mthd gets Drives names 
+	 public	ArrayList<String> getDrives()
 		{
 			ArrayList <String> list1 = new ArrayList<String>();
 			for (int i = 0; i < drvList.getLength(); i++)
