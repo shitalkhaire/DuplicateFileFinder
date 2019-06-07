@@ -38,7 +38,9 @@ public class MyDatabase
 	    
 	public void insert(String Filepath,String Filehash) 
 	{
-	 
+		/*
+		 * Query of Table Creation in database:CREATE TABLE TestFile(File_ID INTEGER, File_path varchar, File_hash varchar, PRIMARY KEY(File_ID) )
+		 */
 		String sqlInsert = "INSERT INTO TestFile(File_path,File_hash) VALUES(?,?)";
 	    try (Connection conn = this.connect();
 	    PreparedStatement pstmt = conn.prepareStatement(sqlInsert)) 
@@ -63,8 +65,8 @@ public class MyDatabase
 	String sqlSelect = "SELECT * from TestFile";
 	ResultSet rs1 = stmt.executeQuery(sqlSelect);
 	        
-	// String dupSelect= "SELECT fileHash,filePath, COUNT(*) from TestFiles Group By fileHash,filePath Having COUNT(*)>1";
-	
+	//Another query to finding duplicate files from specified path or location.
+	//select File_hash, File_path, count(*) from TestFile group by File_hash having count(*) > 1;
 	       
 	//      Extract data from result set
 		while(rs1.next())
@@ -79,7 +81,6 @@ public class MyDatabase
 		    Statement stmt1 = Connectionstring.createStatement();
 		   // String duplHash ="SELECT * FROM TestFile WHERE File_hash='"+fileHash+"'";
 		    String duplHash ="Select * from TestFile where File_Hash='"+fileHash+"' AND Not  File_ID ='"+fileId+"'";
-		   // System.out.println(""+duplHash);
 		    ResultSet rs2 = stmt1.executeQuery(duplHash);
 		      while(rs2.next())
 		      {
