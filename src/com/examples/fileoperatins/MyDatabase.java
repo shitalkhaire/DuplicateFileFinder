@@ -49,15 +49,14 @@ public class MyDatabase
 	    	pstmt.setString(2, Filehash);
 	    	pstmt.executeUpdate();
 	    } catch (SQLException e) 
-	    	{
+	    {
 	    	System.out.println(e.getMessage());
 	    }
 	   }
-	    // TODO we got the hashvalues of files in "fileHash" variable now it requires compare filehash value from resultset .
+	@Deprecated
 	public void checkHashValue() throws SQLException
 	{
-	// hint: how to retrieve data from table see on internet.
-	   
+	 
 	 Connection Connectionstring= connect();
 	 Statement stmt = Connectionstring.createStatement();
 	 // Query of database:- finding duplicate files. 	
@@ -68,7 +67,7 @@ public class MyDatabase
 	//Another query to finding duplicate files from specified path or location.
 	//select File_hash, File_path, count(*) from TestFile group by File_hash having count(*) > 1;
 	       
-	//      Extract data from result set
+	//Extract data from result set
 		while(rs1.next())
 		{
 		     //Retrieve by column name
@@ -97,6 +96,43 @@ public class MyDatabase
 	          
 		 }//end of outer while
 	    }
+	public void CheckHash() throws SQLException
+	{
+		 Connection Connectionstring= connect();
+		 Statement st = Connectionstring.createStatement();	
+		 //Here used nested query to find same hashvalue of files.
+		 String query ="select * from TestFile where File_hash in (select File_hash from TestFile group by File_hash having count(*) > 1)order by file_hash";
+		 ResultSet newRs = st.executeQuery(query);
+		 String lastHash="";
+		 String lastFile="";
+		 while(newRs.next())
+	      {
+	    	  int fId = newRs.getInt("File_ID");
+	    	  String dupfilePath = newRs.getString("File_path");
+	    	  String fHash =newRs.getString("File_hash");
+	    	  
+	    	  File f2= new File(dupfilePath);
+	    	  String fName =f2.getName();
+	    	   
+	    	  if(!lastHash.equals(fHash))
+	    	  {
+	    		  System.out.println(" File:-"+fName);
+	    		  lastFile = fName;
+	    		
+	    		 // System.out.println("-----------------------------------------------------------------------");
+	    	  }
+	    	  else
+	    	  {
+	    		  System.out.println(" "+fId+" "+lastFile+" Has a duplicate copies  "+fName+" Present at "+dupfilePath);
+	    		  System.out.println("-----------------------------------------------------------------------");
+	    		  
+	    	  }
+	    	  lastHash = fHash;
+	    	  
+	      }//end of while
+         
+	
+	}
 	//Method for Delete all records from table: TestFile.
 	public void ClearTable() throws SQLException 
 	{

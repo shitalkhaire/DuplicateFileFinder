@@ -69,7 +69,8 @@ public class FindHashValue
 
 			MyDatabase obj2 = new MyDatabase();
 			System.out.println("Duplicate Files:");
-			obj2.checkHashValue();
+		//	obj2.checkHashValue();
+			obj2.CheckHash();
 			break;
 		case 3:
 			System.out.println("Reset Table And Exited From Execution");
